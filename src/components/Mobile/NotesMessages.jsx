@@ -15,22 +15,14 @@ const NotesMessages = () => {
   const [messages, setMessages] = useState(
     JSON.parse(localStorage.getItem("messages")) || []
   );
-
-  const [inputValue, setInputValue] = useState("");
+    const [inputValue, setInputValue] = useState("");
   const [color, setColor] = useState("");
   const [isSend, setIsSend] = useState(false);
-
-  //   useEffect(() => {
-  //     const storedMessages = JSON.parse(localStorage.getItem("messages"));
-  //     if (storedMessages) {
-  //       setMessages(storedMessages);
-  //       console.log("Stored messages:", storedMessages);
-  //     }
-  //   }, []);
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
 
   const time = new Date();
 
@@ -67,7 +59,7 @@ const NotesMessages = () => {
       // Update the local messages state
       const updatedMessages = [...messages, newMessage];
       setMessages(updatedMessages);
-      // Update localStorage with the updated messages
+
       localStorage.setItem("messages", JSON.stringify(updatedMessages));
 
       // Update groupNames with the new message
@@ -102,7 +94,6 @@ const NotesMessages = () => {
             flexBasis: "10%",
             backgroundColor: "#16008B",
             color: "white",
-
           }}
         >
           <p
@@ -167,10 +158,6 @@ const NotesMessages = () => {
                     {message.timestamp?.time}
                   </div>
                 </div>
-                {/* {localStorage.setItem(
-                  "messages",
-                  JSON.stringify([...messages, newMessage])
-                )} */}
               </div>
             )
           )}

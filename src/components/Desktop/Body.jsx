@@ -16,6 +16,7 @@ const Body = () => {
   const [messages, setMessages] = useState(
     JSON.parse(localStorage.getItem("messages")) || []
   );
+
   const [inputValue, setInputValue] = useState("");
   const [color, setColor] = useState("");
   const [isSend, setIsSend] = useState(false);
