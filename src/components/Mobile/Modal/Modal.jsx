@@ -77,7 +77,7 @@ const Modal = ({ isOpen, onClose, setGroupNames, setColor }) => {
       </div>
       <div style={{ display: "flex" }}>
         <h4>Choose color</h4>
-        <div style={{ display: "flex", gap: "2px" }}>
+        <div style={{ display: "flex", gap: "15px", margin: "auto 0", justifyContent: "center" }}>
         <button
             className="color-button"
             onClick={() => {
