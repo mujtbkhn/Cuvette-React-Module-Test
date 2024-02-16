@@ -1,7 +1,7 @@
 /* notesGroup.css */
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .notes h1 {
@@ -14,22 +14,9 @@ body {
   top: 0;
   background-color: white;
   z-index: 1;
-  font-size: 1.725rem
+  font-size: 1.725rem;
 }
 
-.group-names {
-  display: flex;
-  flex-direction: column;
-  font-size: 1.25rem;
-  overflow-y: auto;
-  font-weight: 500;
-  cursor: pointer;
-  flex-basis: 100%;
-  margin-left: 20px;
-  position: sticky;
-  top: 60px; /* Adjust this value according to the height of the "Pocket Notes" heading */
-  z-index: 0; /* Set z-index lower to ensure it stays behind the "Pocket Notes" heading */
-}
 .group-initial {
   display: flex;
   justify-content: center;
@@ -42,7 +29,20 @@ body {
   font-weight: 500;
   border-radius: 50%;
 }
-
+.group-names {
+  display: flex;
+  flex-direction: column;
+  height: max(350px, 700px);
+  font-size: 1.25rem;
+  overflow-y: auto;
+  font-weight: 500;
+  cursor: pointer;
+  flex-basis: 100%;
+  margin-left: 20px;
+  position: sticky;
+  top: 60px; /* Adjust this value according to the height of the "Pocket Notes" heading */
+  z-index: 0; /* Set z-index lower to ensure it stays behind the "Pocket Notes" heading */
+}
 
 .create-btn {
   border: none;
@@ -52,7 +52,7 @@ body {
   display: inline-block;
   width: 100px;
   height: 100px;
-  left: 70%;
-  bottom: 3%;
+  left: 60%;
+  bottom: 5%;
   border-radius: 50%;
 }
