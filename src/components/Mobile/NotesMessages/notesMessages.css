@@ -2,13 +2,13 @@
 .container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100svh;
 }
 
 .header {
   display: flex;
   justify-content: start;
-  flex-basis: 12%;
+  flex-basis: 10%;
   gap: 10px;
   background-color: #16008B;
   color: white;
@@ -71,18 +71,20 @@
 }
 
 .input-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-basis: 20%;
   background-color: #16008B;
   border-radius: 0px;
+
 }
 
 .input-field {
   position: absolute;
   width: 87%;
   margin: 20px 25px;
-  height: 15%;
+  height: 70%;
   border-radius: 10px;
   font-size: 20px;
 }
