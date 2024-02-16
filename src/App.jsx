@@ -1,9 +1,8 @@
 import { useState } from "react";
-import Body from "./components/Desktop/Body";
-import NotesGroup from "./components/Mobile/NotesGroup";
-import NotesMessages from "./components/Mobile/NotesMessages";
+import NotesGroup from "./components/Mobile/NotesGroup/NotesGroup";
+import NotesMessages from "./components/Mobile/NotesMessages/NotesMessages";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import Body from "./components/Desktop/Body/Body";
 
 
 function App() {

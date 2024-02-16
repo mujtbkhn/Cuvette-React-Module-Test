@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import send from "../../images/send.png";
-import gray from "../../images/send-gray.png";
-import Modal from "./Modal";
+import send from "../../../images/send.png";
+import gray from "../../../images/send-gray.png";
+import back from "../../../images/back.png";
+import Modal from "../Modal/Modal";
+import { Link } from "react-router-dom";
+import "./notesMessages.css";
 
 const NotesMessages = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,14 +18,13 @@ const NotesMessages = () => {
   const [messages, setMessages] = useState(
     JSON.parse(localStorage.getItem("messages")) || []
   );
-    const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("");
   const [color, setColor] = useState("");
   const [isSend, setIsSend] = useState(false);
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
-
 
   const time = new Date();
 
@@ -80,34 +82,15 @@ const NotesMessages = () => {
 
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100vh",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "start",
-            flexBasis: "10%",
-            backgroundColor: "#16008B",
-            color: "white",
-          }}
-        >
+      <div className="container">
+        <div className="header" id="header">
+          <Link to={"/"} className="back-link">
+            <img src={back} alt="Back" />
+          </Link>
           <p
+            id="group-initial"
             style={{
-              display: "flex",
-              justifyContent: "center",
-              margin: "10px 15px",
-              padding: "10px",
-              alignItems: "center",
-              width: "40px",
-              height: "40px",
-              borderRadius: "50%",
               backgroundColor: groupNames[selectedGroupName]?.color || "white",
-              color: "white",
             }}
           >
             {selectedGroupName.split(" ").map((word, index, array) => {
@@ -117,68 +100,25 @@ const NotesMessages = () => {
               return null;
             })}
           </p>
-          <h2 style={{ margin: "auto 0px" }}>{selectedGroupName}</h2>
+          <h2 id="group-name">{selectedGroupName}</h2>
         </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            flexBasis: "70%", // Adjust as needed
-            backgroundColor: "#d4deee",
-            overflowY: "scroll",
-            scrollBehavior: "smooth",
-          }}
-        >
+        <div className="messages-container">
           {(groupNames[selectedGroupName]?.messages || []).map(
             (message, index) => (
-              <div
-                style={{
-                  width: "90%",
-                  margin: "20px",
-                  backgroundColor: "white",
-                  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
-                  fontFamily: "Roboto, sans-serif",
-                  borderRadius: "4px",
-                }}
-                key={index}
-              >
-                <p style={{ padding: "20px" }}>{message.content}</p>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "end",
-                    padding: "0 20px 10px 0",
-                  }}
-                >
-                  <div style={{ paddingRight: "10px" }}>
-                    {message.timestamp?.date}
-                  </div>
-                  <div> ● </div>
-                  <div style={{ paddingLeft: "10px" }}>
-                    {message.timestamp?.time}
-                  </div>
+              <div className="message" key={index}>
+                <p className="message-content">{message.content}</p>
+                <div className="message-timestamp">
+                  <div className="date">{message.timestamp?.date}</div>
+                  <div className="separator"> ● </div>
+                  <div className="time">{message.timestamp?.time}</div>
                 </div>
               </div>
             )
           )}
         </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            flexBasis: "20%", // Adjust as needed
-            backgroundColor: "#16008B",
-            borderRadius: "0px",
-          }}
-        >
+        <div className="input-container">
           <input
-            style={{
-              position: "absolute",
-              width: "87%",
-              margin: "20px 25px",
-              height: "15%",
-              borderRadius: "10px",
-            }}
+            className="input-field"
             type="text"
             placeholder="Enter your text here..."
             value={inputValue}
@@ -188,25 +128,14 @@ const NotesMessages = () => {
               setIsSend(newValue.trim().length > 0);
             }}
           />
-
-          {/* <button> */}
           <img
-            style={{
-              position: "absolute",
-              width: "30px",
-              bottom: "80px",
-              right: "30px",
-              cursor: isSend ? "pointer" : "not-allowed",
-              opacity: isSend ? 1 : 0.5,
-            }}
+            className="send-button"
             onClick={isSend ? sendMessage : undefined}
             src={isSend ? send : gray}
             alt={isSend ? "Send Message" : "Disabled"}
           />
-          {/* </button> */}
         </div>
       </div>
-
       <Modal
         isOpen={isModalOpen}
         onClose={closeModal}

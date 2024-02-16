@@ -1,0 +1,78 @@
+/* modal.css */
+#modal-content-mobile {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80%;
+  height: 260px;
+  background-color: white;
+  /* z-index: 9999; */
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  padding: 20px;
+  font-family: Roboto, sans-serif;
+  overflow-y: auto; 
+}
+
+  
+  #modal-content-mobile h2 {
+    margin-bottom: 10px;
+  }
+  
+  #modal-content-mobile h3 {
+    margin-right: 5px;
+  }
+  
+  #modal-content-mobile input[type="text"] {
+    padding: 0 20px;
+    border-radius: 20px;
+    height: 40px;
+    margin: auto 0;
+    border: 1px solid;
+  }
+  
+  #modal-content-mobile h4 {
+    margin-right: 5px;
+  }
+  
+  #modal-content-mobile button {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  #modal-content-mobile button img {
+    width: 25px;
+  }
+  
+  #modal-content-mobile button:focus {
+    outline: none;
+  }
+    
+  #modal-content-mobile .color-image {
+    width: 25px;
+    height: 25px;
+  }
+  
+  #modal-content-mobile .selected {
+    border: 2px solid black;
+    border-radius: 50%;
+  }
+
+  #modal-content-mobile .create-button {
+    display: flex;
+    position: absolute;
+    right: 90px;
+    bottom: 10px;
+    padding: 10px 30px;
+    color: white;
+    font-size: 18px;
+    background-color: #001f8b;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
