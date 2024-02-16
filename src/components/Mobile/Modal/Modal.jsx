@@ -12,18 +12,29 @@ const Modal = ({ isOpen, onClose, setGroupNames, setColor }) => {
   const [input, setInput] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
   const [clickedColors, setClickedColors] = useState({});
+  const [colorError, setColorError] = useState("")
 
   const handleColorSelection = (color) => {
     setColor(color);
     setSelectedColor(color);
+    setColorError(" ")
   };
 
   const handleClick = (color) => {
-    setClickedColors((prevClickedColors) => ({
-      ...prevClickedColors,
-      [color]: !prevClickedColors[color],
-    }));
+    const updatedClickedColors = {};
+
+  Object.keys(clickedColors).forEach((key) => {
+    updatedClickedColors[key] = false;
+  });
+
+  updatedClickedColors[color] = true;
+
+  setClickedColors(updatedClickedColors);
   };
+
+  useEffect(() => {
+    setSelectedColor(""); 
+  }, [isOpen]);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -61,6 +72,7 @@ const Modal = ({ isOpen, onClose, setGroupNames, setColor }) => {
       }
     }
   };
+  
   
   return (
     <div id="modal-content-mobile">
@@ -158,7 +170,11 @@ const Modal = ({ isOpen, onClose, setGroupNames, setColor }) => {
           </button>
         </div>
       </div>
-      <button className="create-button" onClick={handleGroupName}>Create</button>
+      <button className="create-button" onClick={() => handleGroupName()}>Create</button>
+      <div style={{color: "red"}}>
+
+{colorError && <p >{colorError}</p>}
+</div>
     </div>
   );
 };
