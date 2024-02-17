@@ -1,8 +1,8 @@
-# React + Vite
+# Pocket Notes - [live](https://mujtaba-cuvette-react-test.netlify.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- This a React Module test given by Cuvette for testing our skills in frontend
+- we need to create an application which can create groups and also have notes for the particular groups 
+- all the notes should be retreived on reload/refresh 
+- should be mobile responsive 
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### This was very good project to test our frontend knowledge 
