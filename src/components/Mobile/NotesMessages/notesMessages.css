@@ -1,4 +1,3 @@
-/* notesGroup.css */
 .container {
   display: flex;
   flex-direction: column;
@@ -31,7 +30,6 @@
   height: 50px;
   margin: auto 0;
   border-radius: 50%;
-  /* Add other styles as needed */
 }
 
 #group-name {
@@ -73,7 +71,8 @@
 .input-container {
   position: relative;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   flex-basis: 20%;
   background-color: #16008B;
   border-radius: 0px;
@@ -83,10 +82,13 @@
 .input-field {
   position: absolute;
   width: 87%;
-  margin: 20px 25px;
+  padding: 0.75vh;
   height: 70%;
   border-radius: 10px;
-  font-size: 20px;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 1rem;
 }
 
 .send-button {

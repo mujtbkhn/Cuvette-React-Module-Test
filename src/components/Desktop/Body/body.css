@@ -1,10 +1,10 @@
-/* Styles for Body component */
 body {
+  font-family: 'Roboto', sans-serif;
 }
 
 .body-container {
   display: flex;
-  opacity: 1; /* Default opacity */
+  opacity: 1; 
   font-family: 'Roboto', sans-serif;
 }
 
@@ -33,7 +33,7 @@ body {
   overflow-y: auto;
 }
 .group-names-container::-webkit-scrollbar {
-  width: 0; /* Hide scrollbar */
+  width: 0; 
 }
 
 
@@ -41,6 +41,8 @@ body {
   display: flex;
   flex-direction: row;
   gap: 15px;
+  justify-content: center;
+  border-radius: 20px;
 }
 
 .group-item h4 {
@@ -55,6 +57,7 @@ body {
   font-weight: 500;
   border-radius: 50%;
 }
+
 
 .group-item h1 {
   cursor: pointer;
@@ -88,13 +91,14 @@ body {
 .body-right {
   display: flex;
   flex-direction: column;
-  flex-basis: 70%; /* Adjusted to maintain 70% width */
+  flex-basis: 70%; 
 }
 .selected-group-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
+
 .selected-group-header {
   display: flex;
   justify-content: start;
@@ -130,7 +134,6 @@ body {
   margin: 20px;
   background-color: white;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  font-family: Roboto, sans-serif;
   border-radius: 4px;
 }
 
@@ -146,7 +149,8 @@ body {
 
 .body-input-container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   flex-basis: 20%;
   background-color: #16008b;
   border-radius: 0px;
@@ -155,9 +159,14 @@ body {
 .body-input {
   position: absolute;
   width: 68%;
-  margin: 20px 20px;
+  padding: 0.75vh;
+  /* margin: 20px 20px; */
   height: 15%;
   border-radius: 10px;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 1rem;
 }
 
 .send-icon {
@@ -201,6 +210,6 @@ body {
   margin: auto 0;
 }
 .app-title {
-  text-align: center; /* Center the text */
+  text-align: center; 
   font-size: 2rem
 }

@@ -28,26 +28,15 @@ const NotesMessages = () => {
 
   const time = new Date();
 
-  const formattedDate = time
-    .toLocaleDateString("en-US", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-    })
-    .replace(",", "");
+  const formattedDate = `${time.getDate()} ${time.toLocaleDateString("en-US", {
+    month: "short",
+    year: "numeric",
+  })}`;
 
   const formattedTime = time.toLocaleTimeString("en-US", {
     hour: "2-digit",
     minute: "2-digit",
   });
-
-  const newMessage = {
-    timestamp: {
-      date: formattedDate,
-      time: formattedTime,
-    },
-    content: inputValue,
-  };
 
   const sendMessage = () => {
     if (inputValue.trim() !== "") {
@@ -58,13 +47,10 @@ const NotesMessages = () => {
         },
         content: inputValue,
       };
-      // Update the local messages state
       const updatedMessages = [...messages, newMessage];
       setMessages(updatedMessages);
-
       localStorage.setItem("messages", JSON.stringify(updatedMessages));
 
-      // Update groupNames with the new message
       setGroupNames((prevGroupNames) => ({
         ...prevGroupNames,
         [selectedGroupName]: {
@@ -117,7 +103,7 @@ const NotesMessages = () => {
           )}
         </div>
         <div className="input-container">
-          <input
+          <textarea
             className="input-field"
             type="text"
             placeholder="Enter your text here..."
@@ -127,7 +113,7 @@ const NotesMessages = () => {
               setInputValue(newValue);
               setIsSend(newValue.trim().length > 0);
             }}
-          />
+          ></textarea>
           <img
             className="send-button"
             onClick={isSend ? sendMessage : undefined}

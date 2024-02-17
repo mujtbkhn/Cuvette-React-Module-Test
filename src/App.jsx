@@ -15,6 +15,7 @@ function App() {
 
 return (
     <>
+    
       {screenSize > 500 ? (
         <Body />
       ) : (

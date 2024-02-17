@@ -72,7 +72,7 @@ const NotesGroup = () => {
                   }}
                   key={index}
                 >
-                  <p  style={{ fontSize: "1.525rem" }}>{groupName}</p>
+                  <p style={{ fontSize: "1.525rem" }}>{groupName}</p>
                   {localStorage.setItem(
                     "groupNames",
                     JSON.stringify(groupNames)

@@ -5,47 +5,45 @@ import darkblue from "../../../images/dark blue.png";
 import skyblue from "../../../images/sky blue.png";
 import violet from "../../../images/violet.png";
 import purple from "../../../images/purple.png";
-
-import './mobileModalStyles.css'
+import "./mobileModalStyles.css";
 
 const Modal = ({ isOpen, onClose, setGroupNames, setColor }) => {
   const [input, setInput] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
   const [clickedColors, setClickedColors] = useState({});
-  const [colorError, setColorError] = useState("")
+  const [colorError, setColorError] = useState("");
 
   const handleColorSelection = (color) => {
     setColor(color);
     setSelectedColor(color);
-    setColorError(" ")
+    setColorError(" ");
+  };
+
+  const handleInput = (e) => {
+    if (input.trim().length >= 15) {
+      setColorError("We recommend not more than this length for the group name");
+    } else if(input.trim().length < 15){
+      setColorError("");
+    }
   };
 
   const handleClick = (color) => {
     const updatedClickedColors = {};
-
-  Object.keys(clickedColors).forEach((key) => {
-    updatedClickedColors[key] = false;
-  });
-
-  updatedClickedColors[color] = true;
-
-  setClickedColors(updatedClickedColors);
+    Object.keys(clickedColors).forEach((key) => {
+      updatedClickedColors[key] = false;
+    });
+    updatedClickedColors[color] = true;
+    setClickedColors(updatedClickedColors);
   };
-
-  useEffect(() => {
-    setSelectedColor(""); 
-  }, [isOpen]);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (!isOpen) return;
-
       const modalContent = document.getElementById("modal-content-mobile");
       if (!modalContent.contains(event.target)) {
         onClose();
       }
     };
-
     document.addEventListener("mousedown", handleOutsideClick);
 
     return () => {
@@ -54,7 +52,7 @@ const Modal = ({ isOpen, onClose, setGroupNames, setColor }) => {
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
-  
+
   const handleGroupName = () => {
     if (input.trim() !== "" && selectedColor.trim() !== "") {
       setGroupNames((prevGroupNames) => ({
@@ -72,10 +70,12 @@ const Modal = ({ isOpen, onClose, setGroupNames, setColor }) => {
       }
     }
   };
-  
-  
+
   return (
-    <div id="modal-content-mobile">
+    <div
+      id="modal-content-mobile"
+      style={{ height: colorError ? "300px" : "260px" }}
+    >
       <h2>Create New Group</h2>
       <div style={{ display: "flex", gap: "5px" }}>
         <h3>Group Name</h3>
@@ -84,13 +84,21 @@ const Modal = ({ isOpen, onClose, setGroupNames, setColor }) => {
           placeholder="Enter Group Name"
           onChange={(e) => {
             setInput(e.target.value);
+            handleInput()
           }}
         />
       </div>
       <div style={{ display: "flex" }}>
         <h4>Choose color</h4>
-        <div style={{ display: "flex", gap: "15px", margin: "auto 0", justifyContent: "center" }}>
-        <button
+        <div
+          style={{
+            display: "flex",
+            gap: "15px",
+            margin: "auto 0",
+            justifyContent: "center",
+          }}
+        >
+          <button
             className="color-button"
             onClick={() => {
               handleColorSelection("#FF79F2");
@@ -98,7 +106,11 @@ const Modal = ({ isOpen, onClose, setGroupNames, setColor }) => {
             }}
           >
             <img
-              className={clickedColors["#FF79F2"] ? "color-image selected" : "color-image"}
+              className={
+                clickedColors["#FF79F2"]
+                  ? "color-image selected"
+                  : "color-image"
+              }
               src={violet}
               alt="Violet"
             />
@@ -111,7 +123,11 @@ const Modal = ({ isOpen, onClose, setGroupNames, setColor }) => {
             }}
           >
             <img
-              className={clickedColors["#B38BFA"] ? "color-image selected" : "color-image"}
+              className={
+                clickedColors["#B38BFA"]
+                  ? "color-image selected"
+                  : "color-image"
+              }
               src={purple}
               alt="purple"
             />
@@ -124,7 +140,11 @@ const Modal = ({ isOpen, onClose, setGroupNames, setColor }) => {
             }}
           >
             <img
-              className={clickedColors["#43E6FC"] ? "color-image selected" : "color-image"}
+              className={
+                clickedColors["#43E6FC"]
+                  ? "color-image selected"
+                  : "color-image"
+              }
               src={skyblue}
               alt="skyblue"
             />
@@ -137,7 +157,11 @@ const Modal = ({ isOpen, onClose, setGroupNames, setColor }) => {
             }}
           >
             <img
-              className={clickedColors["#F19576"] ? "color-image selected" : "color-image"}
+              className={
+                clickedColors["#F19576"]
+                  ? "color-image selected"
+                  : "color-image"
+              }
               src={brown}
               alt="brown"
             />
@@ -150,7 +174,11 @@ const Modal = ({ isOpen, onClose, setGroupNames, setColor }) => {
             }}
           >
             <img
-              className={clickedColors["#0047FF"] ? "color-image selected" : "color-image"}
+              className={
+                clickedColors["#0047FF"]
+                  ? "color-image selected"
+                  : "color-image"
+              }
               src={darkblue}
               alt="darkblue"
             />
@@ -163,20 +191,23 @@ const Modal = ({ isOpen, onClose, setGroupNames, setColor }) => {
             }}
           >
             <img
-              className={clickedColors["#6691FF"] ? "color-image selected" : "color-image"}
+              className={
+                clickedColors["#6691FF"]
+                  ? "color-image selected"
+                  : "color-image"
+              }
               src={blue}
               alt="blue"
             />
           </button>
         </div>
       </div>
-      <button className="create-button" onClick={() => handleGroupName()}>Create</button>
-      <div style={{color: "red"}}>
-
-{colorError && <p >{colorError}</p>}
-</div>
+      <button className="create-button" onClick={() => handleGroupName()}>
+        Create
+      </button>
+      <div style={{ color: "red" }}>{colorError && <p>{colorError}</p>}</div>
     </div>
   );
 };
 
-export default Modal
+export default Modal;
